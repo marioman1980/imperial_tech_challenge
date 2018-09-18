@@ -17,10 +17,11 @@
 	@endforeach
 	</table>
 
-	<form action="/makes" method="POST">
+	<form action="/" method="POST">
 		{{ csrf_field() }}
 		<label for="select_make">Select Make</label>
 		<select id="select_make" name="select_make">
+			<option value="all">All</option>
 		@foreach ($makes as $make)
 			<option value="{{ $make->id }}">{{ $make->make }}
 		@endforeach

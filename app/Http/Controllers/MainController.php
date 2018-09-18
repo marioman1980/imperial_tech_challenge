@@ -21,7 +21,14 @@ class MainController extends Controller
 
     public function filter_by_make(Request $request)
     {
-        $vehicles = Vehicle::where('make_id', $request->select_make)->get();
+        if ($request->select_make == 'all')
+        {
+            $vehicles = Vehicle::all();
+        } 
+        else
+        {
+            $vehicles = Vehicle::where('make_id', $request->select_make)->get();
+        }
         return $this->show_vehicles($vehicles);
     }
 
