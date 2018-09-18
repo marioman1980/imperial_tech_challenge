@@ -16,9 +16,16 @@ class MainController extends Controller
     public function index()
     {
     	$vehicles = Vehicle::all();
+    	$makes = VehicleMake::all();
 
     	return view('main', [
-    		'vehicles'	=> $vehicles
+    		'vehicles'	=> $vehicles,
+    		'makes' 	=> $makes
     	]);
+    }
+
+    public function makes(Request $request)
+    {
+    	echo $request->select_make;
     }
 }

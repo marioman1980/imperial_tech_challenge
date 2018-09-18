@@ -16,3 +16,5 @@
 // });
 
 Route::get('/', 'MainController@index');
+
+Route::post('/makes', 'MainController@makes');

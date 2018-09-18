@@ -29,13 +29,21 @@ class Vehicle extends Model
 
     /*****************************/
 
+    // Get make
     public function make()
     {
     	return $this->vehicle_make()->first()->make;
     }   
 
+    // Get model
     public function model()
     {
         return $this->vehicle_model()->first()->model;
-    }    
+    }  
+
+    public function filter_by_make($make_id)
+    {
+        $vehicles = Vehicles::where($this->make()->make_id == $make_id);
+        return $vehicles;
+    }  
 }

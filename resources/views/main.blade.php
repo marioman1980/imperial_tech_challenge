@@ -17,4 +17,15 @@
 		</tr>	
 	@endforeach
 	</table>
+
+	<form action="/makes" method="POST">
+		{{ csrf_field() }}
+		<label for="select_make">Select Make</label>
+		<select id="select_make" name="select_make">
+		@foreach ($makes as $make)
+			<option value="{{ $make->id }}">{{ $make->make }}
+		@endforeach
+		</select>
+		<input type="submit" value="Submit">
+	</form>
 @endsection
