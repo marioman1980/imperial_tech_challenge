@@ -29,9 +29,13 @@ class Vehicle extends Model
 
     /*****************************/
 
-    public static function get($id)
+    public function make()
     {
-    	$vehicle = Vehicle::where('id', $id)->first();
-    	return $vehicle;
+    	return $this->vehicle_make()->first()->make;
     }   
+
+    public function model()
+    {
+        return $this->vehicle_model()->first()->model;
+    }    
 }

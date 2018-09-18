@@ -15,15 +15,10 @@ class MainController extends Controller
 
     public function index()
     {
-    	// $vehicle = Vehicle::where('id', 1)->first();
-    	// var_dump($vehicle->vehicle_model()->get()[0]);
+    	$vehicles = Vehicle::all();
 
-    	// $make = VehicleMake::where('id', 1)->first();
-    	// var_dump($make->vehicle_models()->get()[0]);
-
-    	$model = VehicleModel::where('id', 1)->first();
-    	var_dump($model->vehicles()->get()[1]);
-
-    	// echo $this->test;
+    	return view('main', [
+    		'vehicles'	=> $vehicles
+    	]);
     }
 }
