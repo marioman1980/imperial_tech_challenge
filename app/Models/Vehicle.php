@@ -41,9 +41,4 @@ class Vehicle extends Model
         return $this->vehicle_model()->first()->model;
     }  
 
-    public function filter_by_make($make_id)
-    {
-        $vehicles = Vehicles::where($this->make()->make_id == $make_id);
-        return $vehicles;
-    }  
 }
