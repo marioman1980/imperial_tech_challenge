@@ -26,6 +26,10 @@
 			<option value="{{ $make->id }}">{{ $make->make }}
 		@endforeach
 		</select>
+		<br>
+		<input type="radio" name="sort_by" value="mileage"> Mileage<br>
+		<input type="radio" name="sort_by" value="make"> Make<br>
+		<input type="radio" name="sort_by" value="model"> Model<br>
 		<input type="submit" value="Submit">
 	</form>
 @endsection

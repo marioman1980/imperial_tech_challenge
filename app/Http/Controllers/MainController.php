@@ -15,7 +15,7 @@ class MainController extends Controller
 
     public function index()
     {
-    	$vehicles = Vehicle::all();
+    	$vehicles = Vehicle::all()->sortBy('id');
         return $this->show_vehicles($vehicles);
     }
 
@@ -23,11 +23,11 @@ class MainController extends Controller
     {
         if ($request->select_make == 'all')
         {
-            $vehicles = Vehicle::all();
+            $vehicles = Vehicle::all()->sortBy($request->sort_by);
         } 
         else
         {
-            $vehicles = Vehicle::where('make_id', $request->select_make)->get();
+            $vehicles = Vehicle::where('make_id', $request->select_make)->get()->sortBy($request->sort_by);
         }
         return $this->show_vehicles($vehicles);
     }
