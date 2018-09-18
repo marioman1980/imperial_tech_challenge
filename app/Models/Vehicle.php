@@ -17,14 +17,14 @@ class Vehicle extends Model
      *
      *****************************/
 
-    public function make() 
+    public function vehicle_make() 
     {
-        return $this->belongsTo(Make::class);
+        return $this->belongsTo(VehicleMake::class, 'make_id', 'id');
     } 
 
-    public function model() 
+    public function vehicle_model() 
     {
-        return $this->belongsTo(Model::class);
+        return $this->belongsTo(VehicleModel::class, 'model_id', 'id');
     }  
 
     /*****************************/

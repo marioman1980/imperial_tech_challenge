@@ -19,12 +19,12 @@ class VehicleModel extends Model
 
     public function vehicle_make() 
     {
-        return $this->belongsTo(VehicleMake::class);
+        return $this->belongsTo(VehicleMake::class, 'make_id', 'id');
     } 
     
     public function vehicles() 
     {
-        return $this->hasMany(Vehicle::class);
+        return $this->hasMany(Vehicle::class, 'model_id', 'id');
     } 
 
     /*****************************/
