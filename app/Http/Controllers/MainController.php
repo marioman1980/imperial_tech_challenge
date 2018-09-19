@@ -41,7 +41,32 @@ class MainController extends Controller
         {
             $vehicles = Vehicle::where('make_id', $request->select_make)->get()->sortBy($request->sort_by);
         }
-        return $this->show_vehicles($vehicles);
+
+        if (!empty($request->feature))
+        {
+            $filtered_feature_ids = array_map('intval', $request->feature);
+
+            // Compare vehicle feature ids with those posted
+            $filtered_vehicles = [];
+            foreach ($vehicles as $vehicle)
+            {
+                $feature_ids = [];
+                foreach ($vehicle->get_features() as $feature)
+                {
+                    array_push($feature_ids, $feature->id);
+                }
+                $result = array_diff($filtered_feature_ids, $feature_ids);
+                if (empty($result))
+                {
+                    array_push($filtered_vehicles, $vehicle);
+                }
+            }
+            return $this->show_vehicles($filtered_vehicles);
+        }
+        else
+        {
+            return $this->show_vehicles($vehicles);
+        }
     }
 
     /**
