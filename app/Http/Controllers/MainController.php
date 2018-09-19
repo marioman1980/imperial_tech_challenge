@@ -19,7 +19,7 @@ class MainController extends Controller
         return $this->show_vehicles($vehicles);
     }
 
-    public function filter_by_make(Request $request)
+    public function filter(Request $request)
     {
         if ($request->select_make == 'all')
         {
@@ -31,6 +31,7 @@ class MainController extends Controller
         }
         return $this->show_vehicles($vehicles);
     }
+
 
     public function show_vehicles($vehicles)
     {

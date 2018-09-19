@@ -17,4 +17,4 @@
 
 Route::get('/', 'MainController@index');
 
-Route::post('/', 'MainController@filter_by_make');
+Route::post('/', 'MainController@filter');
