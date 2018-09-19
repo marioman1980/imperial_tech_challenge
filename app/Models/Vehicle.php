@@ -58,4 +58,20 @@ class Vehicle extends Model
         return $this->vehicle_model()->first()->model;
     }  
 
+    /**
+     * Get features for each vehicle
+     *
+     * @return array
+     */
+    public function get_features() 
+    {
+        $vehicle_features = [];
+
+        foreach ($this->vehicle_features()->get() as $vehicle_feature)
+        {
+            array_push($vehicle_features, $vehicle_feature->feature()->first()->feature);
+        }
+        return $vehicle_features;
+    }
+
 }

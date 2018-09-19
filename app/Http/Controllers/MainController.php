@@ -21,6 +21,7 @@ class MainController extends Controller
     {
     	$vehicles = Vehicle::all()->sortBy('id');
         return $this->show_vehicles($vehicles);
+        // var_dump($vehicles[0]->get_features());
     }
 
     /**
