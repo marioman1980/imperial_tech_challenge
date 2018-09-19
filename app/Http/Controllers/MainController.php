@@ -78,10 +78,12 @@ class MainController extends Controller
     {
         $vehicles = $vehicles;
         $makes = VehicleMake::all();
+        $features = Feature::all();
         
         return view('main', [
             'vehicles'  => $vehicles,
-            'makes'     => $makes
+            'makes'     => $makes,
+            'features'    => $features
         ]);        
     }
 }

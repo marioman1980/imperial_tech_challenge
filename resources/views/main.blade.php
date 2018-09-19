@@ -18,11 +18,9 @@
 					<input type="radio" name="sort_by" value="model()"> Model<br>
 				</div>
 				<div class="col-sm-6">
-					<input type="checkbox" name="feature[]" value="1"> Electric Windows<br>
-					<input type="checkbox" name="feature[]" value="2"> Bluetooth<br>
-					<input type="checkbox" name="feature[]" value="3"> Sat Nav<br>
-					<input type="checkbox" name="feature[]" value="4"> All Wheel Drive<br>
-					<input type="checkbox" name="feature[]" value="5"> Sliding Side Door<br>
+				@foreach ($features as $feature)
+					<input type="checkbox" name="feature[]" value="{{ $feature->id }}"> {{ $feature->feature }}<br>
+				@endforeach
 				</div>
 				<input type="submit" value="Submit">
 			</div>
