@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Vehicle;
 use App\Models\VehicleMake;
 use App\Models\VehicleModel;
+use App\Models\VehicleFeature;
+use App\Models\Feature;
 
 class MainController extends Controller
 {
@@ -39,7 +41,41 @@ class MainController extends Controller
         {
             $vehicles = Vehicle::where('make_id', $request->select_make)->get()->sortBy($request->sort_by);
         }
-        return $this->show_vehicles($vehicles);
+        $filtered_feature_ids = array_map('intval', $request->feature);
+        var_dump($filtered_feature_ids);
+
+        // $feature_ids = [];
+        $filtered_vehicles = [];
+
+        foreach ($vehicles as $vehicle)
+        {
+            $feature_ids = [];
+            foreach ($vehicle->get_features() as $feature)
+            {
+                array_push($feature_ids, $feature->id);
+            }
+            if ($filtered_feature_ids == $feature_ids)
+            {
+                array_push($filtered_vehicles, $vehicle);
+            }
+        }
+
+        // foreach ($vehicles[4]->get_features() as $feature)
+        // {
+        //     array_push($feature_ids, $feature->id);
+        // }
+
+        // var_dump($feature_ids);
+
+        
+
+
+
+        // var_dump(Vehicle::where(VehicleFeature::whereIn('id',[1,2,3])->get()[0]->id));
+        // var_dump(VehicleFeature::whereIn('id',[1,2,3])->get()[0]);
+
+        return $this->show_vehicles($filtered_vehicles);
+
     }
 
     /**

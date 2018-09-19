@@ -16,14 +16,14 @@
 			<td>{{ $vehicle->mileage }}</td>
 			<td>
 			@foreach ($vehicle->get_features() as $vehicle_feature)
-				{{ $vehicle_feature }}
+				{{ $vehicle_feature->feature }}
 				<br>
 			@endforeach
 			</td>
 		</tr>	
 	@endforeach
 	</table>
-
+	<hr>
 	<form action="/" method="POST">
 		{{ csrf_field() }}
 		<label for="select_make">Select Make</label>
@@ -37,6 +37,14 @@
 		<input type="radio" name="sort_by" value="mileage"> Mileage<br>
 		<input type="radio" name="sort_by" value="make()"> Make<br>
 		<input type="radio" name="sort_by" value="model()"> Model<br>
+		<hr>
+
+
+		<input type="checkbox" name="feature[]" value="1"> Electric Windows<br>
+		<input type="checkbox" name="feature[]" value="2"> Bluetooth<br>
+		<input type="checkbox" name="feature[]" value="3"> Sat Nav<br>
+		<input type="checkbox" name="feature[]" value="4"> All Wheel Drive<br>
+		<input type="checkbox" name="feature[]" value="5"> Sliding Side Door<br>
 		<input type="submit" value="Submit">
 	</form>
 @endsection

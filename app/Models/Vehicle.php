@@ -69,9 +69,19 @@ class Vehicle extends Model
 
         foreach ($this->vehicle_features()->get() as $vehicle_feature)
         {
-            array_push($vehicle_features, $vehicle_feature->feature()->first()->feature);
+            array_push($vehicle_features, $vehicle_feature->feature()->first());
         }
         return $vehicle_features;
+    }
+
+    public function filter_by_feature($features) 
+    {
+        $feature_ids = [];
+
+        foreach ($features as $feature)
+        {
+            array_push($feature_ids, $feature->id);
+        }
     }
 
 }
