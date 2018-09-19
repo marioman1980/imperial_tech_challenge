@@ -12,13 +12,22 @@ class MainController extends Controller
     public function __construct()
     {
     }
-
+    /**
+     * Show all vehicles
+     *
+     * @return object
+     */
     public function index()
     {
     	$vehicles = Vehicle::all()->sortBy('id');
         return $this->show_vehicles($vehicles);
     }
 
+    /**
+     * Show filtered vehicles
+     *
+     * @return object
+     */
     public function filter(Request $request)
     {
         if ($request->select_make == 'all')
@@ -32,7 +41,11 @@ class MainController extends Controller
         return $this->show_vehicles($vehicles);
     }
 
-
+    /**
+     * Get view
+     *
+     * @return object
+     */
     public function show_vehicles($vehicles)
     {
         $vehicles = $vehicles;

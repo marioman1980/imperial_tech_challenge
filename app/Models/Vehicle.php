@@ -27,15 +27,27 @@ class Vehicle extends Model
         return $this->belongsTo(VehicleModel::class, 'model_id', 'id');
     }  
 
-    /*****************************/
+    /*****************************
+     *
+     * Other functions
+     *
+     *****************************/
 
-    // Get make
+    /**
+     * Get make
+     *
+     * @return string
+     */
     public function make()
     {
     	return $this->vehicle_make()->first()->make;
     }   
 
-    // Get model
+    /**
+     * Get model
+     *
+     * @return string
+     */
     public function model()
     {
         return $this->vehicle_model()->first()->model;
